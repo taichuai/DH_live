@@ -1,5 +1,8 @@
 # Real-time Live Streaming Digital Human
 # 实时直播数字人  [bilibili video](https://www.bilibili.com/video/BV1Ppv1eEEgj/?vd_source=53601feee498369e726af7dbc2dae349)
+### News
+## Training
+Details on the render model training can be found [here](https://github.com/kleinlee/DH_live/tree/master/train).
 ### Video Example
 
 
@@ -14,16 +17,20 @@ This project is a real-time live streaming digital human powered by few-shot lea
 - **Few-shot Learning**: The system is capable of learning from a few examples to generate realistic responses.
 ## Usage
 
-### Unzip the Model File
+### Create Environment and Unzip the Model File 
 First, navigate to the `checkpoint` directory and unzip the model file:
 ```bash
+conda create -n dh_live python=3.12
+conda activate dh_live
+pip install torch --index-url https://download.pytorch.org/whl/cu124
+pip install -r requirements.txt
 cd checkpoint
 gzip -d -c render.pth.gz.001 > render.pth
 ```
 ### Prepare Your Video
 Next, prepare your video using the data_preparation script. Replace YOUR_VIDEO_PATH with the path to your video:
 ```bash
-python data_preparation YOUR_VIDEO_PATH
+python data_preparation.py YOUR_VIDEO_PATH
 ```
 The result (video_info) will be stored in the ./video_data directory.
 ### Run with Audio File
@@ -38,7 +45,7 @@ python demo_avatar.py
 ```
 
 ## Acknowledgements 
-We would like to thank the contributors of [wavlip](https://github.com/Rudrabha/Wav2Lip), [dinet](https://github.com/MRzzm/DINet), [livespeechportrait](https://github.com/YuanxunLu/LiveSpeechPortraits) repositories, for their open research and contributions.
+We would like to thank the contributors of [Wav2Lip](https://github.com/Rudrabha/Wav2Lip), [DINet](https://github.com/MRzzm/DINet), [LiveSpeechPortrait](https://github.com/YuanxunLu/LiveSpeechPortraits) repositories, for their open research and contributions.
 
 ## License
 This project is licensed under the MIT License.
